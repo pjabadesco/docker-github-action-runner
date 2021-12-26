@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  runner:
+    image: pjabadesco/docker-github-action-runner:0.26
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == worker
+    environment:
+      - ORGANIZATION=<YOUR-GITHUB-ORGANIZATION>
+      - ACCESS_TOKEN=<YOUR-GITHUB-ACCESS-TOKEN>
+      - REGISTRY_URL=192.168.0.1:5000
+    volumes:
+      - kube:/home/docker/.kube
+      - work:/home/docker/actions-runner/_work
+volumes:
+  kube: null
+  work: null
