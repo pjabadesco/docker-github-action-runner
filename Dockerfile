@@ -6,7 +6,13 @@ ARG RUNNER_VERSION="2.286.0"
 
 # update the base packages and add a non-sudo user
 RUN apt-get update -y && apt-get upgrade -y && useradd -m docker
-RUN apt-get install gettext-base
+RUN apt-get install -y gettext-base 
+# RUN apt-get update -qq && apt-get install -qqy \
+#     apt-transport-https \
+#     ca-certificates \
+#     curl \
+#     lxc \
+#     iptables 
 
 # install python and the packages the your code depends on along with jq so we can parse JSON
 # add additional packages as necessary
@@ -14,6 +20,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     curl jq build-essential libssl-dev libffi-dev python3 python3-venv python3-dev python3-pip
 
 RUN curl -fsSL https://get.docker.com | sh
+
 RUN curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 RUN chmod +x /usr/local/bin/docker-compose
 
@@ -51,9 +58,25 @@ COPY start.sh start.sh
 # make the script executable
 RUN chmod +x start.sh
 
+# RUN apt-get install -y dbus-user-session kmod uidmap iptables
+# RUN apt-get install -y --reinstall linux-modules-5.10.47-generic
+# RUN modprobe ip_tables
+
 # since the config and run script for actions are not allowed to be run by root,
 # set the user to "docker" so all subsequent commands are run as the docker user
+# RUN usermod -aG docker root
+# RUN newgrp docker
+RUN groupadd -g 998 rdocker
+RUN usermod -aG rdocker docker
 USER docker
+
+# RUN curl -fsSL https://get.docker.com/rootless | sh
+# # RUN dockerd-rootless-setuptool.sh install
+# # RUN service docker start
+# RUN export XDG_RUNTIME_DIR=/home/docker/.docker/run
+# RUN export PATH=/home/docker/bin:$PATH
+# RUN export DOCKER_HOST=unix:///home/docker/.docker/run/docker.sock
+# RUN /home/docker/bin/dockerd-rootless.sh 
 
 VOLUME ["/home/docker/.kube","/home/docker/actions-runner/_work"]
 

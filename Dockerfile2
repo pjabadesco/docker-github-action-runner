@@ -1,0 +1,8 @@
+FROM docker:20.10.12-dind-rootless
+
+# set the github runner version
+ARG RUNNER_VERSION="2.286.0"
+
+# update the base packages and add a non-sudo user
+RUN apt-get update -y && apt-get upgrade -y && useradd -m docker
+RUN apt-get install -y gettext-base 

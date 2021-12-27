@@ -1,0 +1,10 @@
+FROM docker:dind
+
+ARG RUNNER_VERSION="2.286.0"
+
+# update the base packages and add a non-sudo user
+RUN apk update && apk upgrade 
+# RUN apk add gettext-base 
+
+RUN curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+RUN chmod +x /usr/local/bin/docker-compose
