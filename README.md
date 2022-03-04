@@ -11,3 +11,8 @@ docker volume prune
  docker compose -f docker-compose.yml -f docker-compose.admin.yml run backup_db
 
 https://testdriven.io/blog/github-actions-docker/
+
+
+https://medium.com/geekculture/docker-build-with-mac-m1-d668c802ab96
+docker buildx build --platform linux/amd64 ./
+
