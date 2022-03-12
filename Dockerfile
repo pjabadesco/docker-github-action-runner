@@ -78,7 +78,7 @@ USER docker
 # RUN export DOCKER_HOST=unix:///home/docker/.docker/run/docker.sock
 # RUN /home/docker/bin/dockerd-rootless.sh 
 
-VOLUME ["/home/docker/.kube","/home/docker/actions-runner/_work"]
+# VOLUME ["/home/docker/.kube","/home/docker/actions-runner/_work"]
 
 # set the entrypoint to the start.sh script
 ENTRYPOINT ["./start.sh"]

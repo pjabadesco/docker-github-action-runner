@@ -2,7 +2,7 @@ version: '3'
 
 services:
   runner:
-    image: pjabadesco/docker-github-action-runner:0.29
+    image: pjabadesco/docker-github-action-runner:0.49
     deploy:
       mode: replicated
       replicas: 1
