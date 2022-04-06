@@ -6,13 +6,18 @@ ARG RUNNER_VERSION="2.289.2"
 
 # update the base packages and add a non-sudo user
 RUN apt-get update -y && apt-get upgrade -y && useradd -m docker
-RUN apt-get install -y gettext-base 
+RUN apt-get install -y gettext-base
 # RUN apt-get update -qq && apt-get install -qqy \
 #     apt-transport-https \
 #     ca-certificates \
 #     curl \
 #     lxc \
 #     iptables 
+
+RUN apt install -y software-properties-common && \
+    add-apt-repository ppa:git-core/ppa -y && \
+    apt-get update && \
+    apt-get install git -y
 
 # install python and the packages the your code depends on along with jq so we can parse JSON
 # add additional packages as necessary
@@ -21,7 +26,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
 
 RUN curl -fsSL https://get.docker.com | sh
 
-RUN curl -L "https://github.com/docker/compose/releases/download/2.4.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+RUN curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 RUN chmod +x /usr/local/bin/docker-compose
 
 # cd into the user directory, download and unzip the github actions runner
