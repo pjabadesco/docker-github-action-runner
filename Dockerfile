@@ -2,11 +2,11 @@
 FROM ubuntu:18.04
 
 # set the github runner version
-ARG RUNNER_VERSION="2.293.0"
+ARG RUNNER_VERSION="2.294.0"
 
 # update the base packages and add a non-sudo user
 RUN apt-get update -y && apt-get upgrade -y && useradd -m docker
-RUN apt-get install -y gettext-base
+RUN apt-get install -y gettext-base iputils-ping vim
 # RUN apt-get update -qq && apt-get install -qqy \
 #     apt-transport-https \
 #     ca-certificates \
