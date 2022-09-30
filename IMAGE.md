@@ -4,10 +4,10 @@ docker-compose build
 ## NEW
 docker buildx build --platform=linux/amd64 --tag=docker-github-action-runner:latest --load .
 
-docker tag docker-github-action-runner:latest pjabadesco/docker-github-action-runner:0.68
-docker push pjabadesco/docker-github-action-runner:0.68
+docker tag docker-github-action-runner:latest pjabadesco/docker-github-action-runner:0.71
+docker push pjabadesco/docker-github-action-runner:0.71
 
-docker tag pjabadesco/docker-github-action-runner:0.68 pjabadesco/docker-github-action-runner:latest
+docker tag pjabadesco/docker-github-action-runner:0.71 pjabadesco/docker-github-action-runner:latest
 docker push pjabadesco/docker-github-action-runner:latest
 
 docker tag pjabadesco/docker-github-action-runner:latest ghcr.io/pjabadesco/docker-github-action-runner:latest
