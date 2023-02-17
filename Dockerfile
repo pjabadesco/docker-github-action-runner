@@ -15,9 +15,8 @@ RUN apt-get install -y gettext-base iputils-ping vim
 #     iptables 
 
 RUN apt install -y software-properties-common && \
-    add-apt-repository ppa:git-core/ppa -y && \
-    apt-get update && \
-    apt-get install git -y
+    add-apt-repository ppa:git-core/ppa -y   
+RUN apt-get update && apt-get install git -y
 
 # install python and the packages the your code depends on along with jq so we can parse JSON
 # add additional packages as necessary
