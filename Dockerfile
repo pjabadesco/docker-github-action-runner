@@ -90,7 +90,7 @@ USER docker
 # VOLUME ["/home/docker/.kube","/home/docker/actions-runner/_work"]
 
 # FIX GIT PULL PROBLEMS
-RUN git config --global http.postBuffer 524288000
+RUN git config --global http.postBuffer 1048576000
 
 # set the entrypoint to the start.sh script
 ENTRYPOINT ["./start.sh"]
