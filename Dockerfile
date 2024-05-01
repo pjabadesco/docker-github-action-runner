@@ -91,6 +91,8 @@ USER docker
 
 # FIX GIT PULL PROBLEMS
 RUN git config --global http.postBuffer 1048576000
+RUN git config --global http.timeout 300 
+COPY .gitconfig /home/docker/.gitconfig
 
 # set the entrypoint to the start.sh script
 ENTRYPOINT ["./start.sh"]

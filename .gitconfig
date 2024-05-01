@@ -1,0 +1,13 @@
+[http]
+  # Increase connection timeout (adjust value as needed)
+  postBuffer = 1048576000
+  timeout = 300  ; 5 minutes
+
+[fetch]
+  # Retry downloading objects after failures (adjust number of attempts)
+  retry = 3
+
+[transfer]
+  # Increase buffer size for data transfers (adjust value as needed)
+  fsync = false
+  packSizeLimit = 2gb  ; Adjust based on your network bandwidth
