@@ -15,3 +15,5 @@ docker volume prune
 docker buildx build --platform linux/amd64 ./
 
 docker system prune -a
+
+copy .gitconfig to /home/docker/.gitconfig
