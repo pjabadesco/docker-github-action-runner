@@ -13,6 +13,7 @@ services:
       - ORGANIZATION=<YOUR-GITHUB-ORGANIZATION>
       - ACCESS_TOKEN=<YOUR-GITHUB-ACCESS-TOKEN>
       - REGISTRY_URL=192.168.0.1:5000
+      - ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true
     privileged: true
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
