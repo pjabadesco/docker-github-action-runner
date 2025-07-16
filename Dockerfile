@@ -2,7 +2,7 @@
 FROM ubuntu:20.04
 
 # set the GitHub runner version
-ARG RUNNER_VERSION="2.322.0"
+ARG RUNNER_VERSION="2.326.0"
 
 # update the base packages and add a non-sudo user
 RUN apt-get update -y && apt-get upgrade -y && useradd -m docker
